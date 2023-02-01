@@ -22,6 +22,13 @@ Route::get(
     }
 )->name('checkout');
 
+Route::controller(SslCommerzPaymentController::class)->group(
+    function () {
+        Route::post('pay', 'pay')->name('pay');
+        Route::post('pay-via-ajax', 'payViaAjax')->name('pay-via-ajax');
+    }
+);
+
 Route::controller(bKashPaymentController::class)->group(
     function () {
         Route::post('token', 'token')->name('token');
